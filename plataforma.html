@@ -1,0 +1,138 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Predicción de Rendimiento Académico</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23667eea'/><rect x='20' y='55' width='12' height='25' fill='%23ffffff' rx='2'/><rect x='37' y='45' width='12' height='35' fill='%23ffffff' rx='2'/><rect x='54' y='35' width='12' height='45' fill='%23ffffff' rx='2'/><rect x='71' y='25' width='12' height='55' fill='%23ffffff' rx='2'/><path d='M 50 15 L 35 20 L 50 25 L 65 20 Z' fill='%23ffd700'/></svg>">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Predicción de Rendimiento Académico</h1>
+            <p>Sistema de detección temprana de riesgo de abandono</p>
+        </div>
+
+        <div class="nav">
+            <button class="active" onclick="showTab('dashboard')">Dashboard</button>
+            <button onclick="showTab('students')">Estudiantes</button>
+            <button onclick="showTab('add')">Agregar Estudiante</button>
+        </div>
+
+        <div class="content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card total">
+                        <h3 id="stat-total">0</h3>
+                        <p>Total Estudiantes</p>
+                    </div>
+                    <div class="stat-card high">
+                        <h3 id="stat-high">0</h3>
+                        <p>Riesgo Alto</p>
+                    </div>
+                    <div class="stat-card medium">
+                        <h3 id="stat-medium">0</h3>
+                        <p>Riesgo Medio</p>
+                    </div>
+                    <div class="stat-card low">
+                        <h3 id="stat-low">0</h3>
+                        <p>Riesgo Bajo</p>
+                    </div>
+                </div>
+
+                <div id="alert-container"></div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Curso</th>
+                            <th>Promedio</th>
+                            <th>Asistencia</th>
+                            <th>Riesgo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboard-table"></tbody>
+                </table>
+            </div>
+
+            <!-- Students Tab -->
+            <div id="students" class="tab-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Curso</th>
+                            <th>Calificaciones</th>
+                            <th>Promedio</th>
+                            <th>Asistencia</th>
+                            <th>Participación</th>
+                            <th>Tareas</th>
+                            <th>Riesgo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-table"></tbody>
+                </table>
+            </div>
+
+            <!-- Add Student Tab -->
+            <div id="add" class="tab-content">
+                <div class="form-container">
+                    <h2 style="margin-bottom: 30px; color: #667eea;">Registrar Nuevo Estudiante</h2>
+                    <form id="student-form">
+                        <div class="form-group">
+                            <label>Nombre Completo *</label>
+                            <input type="text" id="name" required placeholder="Ej: Juan Pérez">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Curso *</label>
+                            <input type="text" id="course" required placeholder="Ej: Matemáticas I">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Calificaciones (separadas por comas)</label>
+                            <input type="text" id="grades" placeholder="Ej: 85, 90, 78">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Asistencia (%)</label>
+                                <input type="number" id="attendance" min="0" max="100" placeholder="0-100">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Participación (1-10)</label>
+                                <input type="number" id="participation" min="1" max="10" placeholder="1-10">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Tareas Completadas</label>
+                                <input type="number" id="assignmentsCompleted" min="0" placeholder="Ej: 8">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Total de Tareas</label>
+                                <input type="number" id="totalAssignments" min="0" placeholder="Ej: 10">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn">Registrar Estudiante</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
